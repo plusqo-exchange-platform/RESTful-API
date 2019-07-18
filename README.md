@@ -16,3 +16,5 @@ __***Authorization***__
 <br/>Authorization is done via sending two headers:
 
   1. **key** - The public key, that can be obtained from user’s account
+  2. **sign** - POST data (param = val & param1 = val1 … & paramN = valN), signed by the secret key HMAC-SHA512, secret key is also obtained from user’s account
+  
