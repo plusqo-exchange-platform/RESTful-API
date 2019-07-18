@@ -47,5 +47,5 @@ Responses
 
 Code | Description 
 --- | --- 
-200 | {<br/>&nbsp;"errors": {<br/>&nbsp;&nbsp;"field": "Error text for input named field"<br/>}
+200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}<br/>}
 500 |  Server error
