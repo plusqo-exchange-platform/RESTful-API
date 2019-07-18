@@ -1,2 +1,2 @@
 # RESTful-API
-PlusQO RESTful API for Traders - V1.0.0.1
+PlusQO RESTful API for Traders - V1 / [ Base URL: https://trading.plusqo.io/api/v1/ ]
