@@ -14,3 +14,5 @@ To access this API requires authentication and you must use POST methods. API ke
 
 __***Authorization***__
 <br/>Authorization is done via sending two headers:
+
+  1. **key** - The public key, that can be obtained from user’s account
