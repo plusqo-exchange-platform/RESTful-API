@@ -28,4 +28,5 @@ __***Authorization***__
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 ```
-  
+
+## **`Public`** calls available for all without registration
