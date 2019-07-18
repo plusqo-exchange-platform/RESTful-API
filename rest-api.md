@@ -32,7 +32,7 @@ __***Authorization***__
 ## **`Public`** calls available for all without registration
 
 
-* Get currencies list **`GET`&nbsp;&nbsp;/currency/list**
+### 1. **`GET`&nbsp;&nbsp;/currency/list** (Get currencies list) 
 
 Parameter
 
