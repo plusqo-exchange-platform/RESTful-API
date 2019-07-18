@@ -33,3 +33,12 @@ __***Authorization***__
 
 
 * Get currencies list **`GET`&nbsp;&nbsp;/currency/list**
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+order\_by | string | Field to order by | currency\_id | iso, name, currency\_id
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | Current page | 1 | 
