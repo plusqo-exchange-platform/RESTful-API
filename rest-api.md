@@ -43,9 +43,9 @@ order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
 page | integer | Current page | 1 | 
 
-Responses
+Sample Responses
 
 Code | Description 
 --- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}<br/>}
+200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10<br/>&nbsp;&nbsp;&nbsp;},<br/>}
 500 |  Server error
