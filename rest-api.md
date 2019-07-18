@@ -69,3 +69,28 @@ Code | Description
 --- | --- 
 200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entity": <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iso" : "BTC"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name" : "Bitcoin"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"currency_id" : 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;}<br/>}
 500 |  Server error
+
+
+### 3. **`GET`&nbsp;&nbsp;/trade/list** (Get trade logs list) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+pair\_id | integer | Currency pair id |  | 
+type | string | type to find |  | buy, sell
+date\_from | integer | Timestamp to start | -1 day | 
+date\_to | integer | Timestamp to end | current timestamp | 
+order\_by | string | Field to order by (*required*) | trade\_id | trade\_id, pair\_id, type, price, volume, fee, created 
+order\_direction | string | Direction to order by (*required*) | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) (*required*) | 100 | 
+page | integer | current page (*required*) | 1 | 
+
+Sample call : `https://trading.plusqo.io/api/v1/trade/list?pair_id=10`
+
+Sample Responses
+
+Code | Description 
+--- | --- 
+200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iso" : "BTC"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name" : "Bitcoin"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"currency_id" : 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
+500 |  Server error
