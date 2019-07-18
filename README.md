@@ -30,3 +30,6 @@ __***Authorization***__
 ```
 
 ## **`Public`** calls available for all without registration
+
+
+* Get currencies list **`GET`&nbsp;&nbsp;/currency/list**
