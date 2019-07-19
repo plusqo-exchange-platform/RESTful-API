@@ -514,7 +514,7 @@ Name | Type | Description | Default value | Available values
 pair\_id | integer | Currency pair id |  | 
 type | string | type to find |  | buy, sell
 date\_from | integer | Timestamp to start | -1 day | 
-datef\_to | integer | Timestamp to end | current timestamp | 
+date\_to | integer | Timestamp to end | current timestamp | 
 order\_by | string | Field to order by | trade\_id | trade\_id, pair\_id, type, price, volume, fee, created
 order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
@@ -585,7 +585,7 @@ Name | Type | Description | Default value | Available values
 pair\_id | integer | Currency pair id |  | 
 type | string | type to find |  | buy, sell
 date\_from | integer | Timestamp to start | -1 day | 
-datef\_to | integer | Timestamp to end | current timestamp | 
+date\_to | integer | Timestamp to end | current timestamp | 
 order\_by | string | Field to order by | trade\_id | trade\_id, pair\_id, type, price, volume, fee, created
 order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
