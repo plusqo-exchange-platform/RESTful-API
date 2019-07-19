@@ -125,7 +125,7 @@ order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
 page | integer | Current page | 1 | 
 
-Sample call : `https://trading.plusqo.io/api/v1/currency/list?order_by=name`
+Sample call : `https://trading.plusqo.io/api/v1/pair/list`
 
 Sample Responses
 
