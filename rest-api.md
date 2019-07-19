@@ -48,12 +48,33 @@ page | integer | Current page | 1 |
 
 Sample call : `https://trading.plusqo.io/api/v1/currency/list?order_by=name`
 
-Sample Responses
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+    "errors": {
+        "field": "Error text for input named field"
+     }, 
+     "pagination": {
+         "current_page": 1,
+         "items_per_page": 10,
+         "total_items": 100,
+         "total_pages": 10
+     },
+     "responses": {
+         "entities": [
+             {
+                 "iso" : "BTC",
+                 "name" : "Bitcoin",
+                 "currency_id" : 1
+             }
+         ]
+     }
+}
+```
+</details>
 
-Code | Description 
---- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10,<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iso" : "BTC",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name" : "Bitcoin",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"currency_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
-500 |  Server error
 
 
 ### 2. **`GET`&nbsp;&nbsp;/currency/info** (Get currency by id) 
