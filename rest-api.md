@@ -505,7 +505,7 @@ Name | Type | Description | Default value | Available values
 --- | --- | --- | --- | ---
 pair\_id | integer | Currency pair id |  | 
 type | string | type to find |  | buy, sell
-datef\_from | integer | Timestamp to start | -1 day | 
+date\_from | integer | Timestamp to start | -1 day | 
 datef\_to | integer | Timestamp to end | current timestamp | 
 order\_by | string | Field to order by | trade\_id | trade\_id, pair\_id, type, price, volume, fee, created
 order\_direction | string | Direction to order by | asc | asc, desc
@@ -516,7 +516,7 @@ page | integer | Current page | 1 |
  <summary>Sample call in PHP</summary>
  
 ```php
-	$postData = http_build_query($data);
+    $postData = http_build_query($data);
     $sign = hash_hmac('sha512', $postData, $privateKey);
     $headers = array("Key: $publicKey", "Sign: $sign");
     $ch = curl_init();
