@@ -25,11 +25,19 @@ __***Authorization***__
 #### ***PHP example***
 
 ```php
-    $postData = http_build_query($data);
-    $sign = hash_hmac('sha512', $postData, $privateKey);
+    $api_url = "https://trading.plusqo.io/api/v1/trade/list";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('pair_id' => 1, 'nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
     $headers = array("Key: $publicKey", "Sign: $sign");
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+	$result = curl_exec($ch);
+	//handle with $result here...
 ```
 
 ## **`Public`** calls available for all without registration
@@ -516,11 +524,20 @@ page | integer | Current page | 1 |
  <summary>Sample call in PHP</summary>
  
 ```php
-    $postData = http_build_query($data);
-    $sign = hash_hmac('sha512', $postData, $privateKey);
+    $api_url = "https://trading.plusqo.io/api/v1/trade/list";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('pair_id' => 1, 'nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
     $headers = array("Key: $publicKey", "Sign: $sign");
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+	$result = curl_exec($ch);
+	//handle with $result here...
+	
 ```
 </details>
 
