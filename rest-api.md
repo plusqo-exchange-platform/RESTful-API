@@ -13,7 +13,7 @@ In general, the URL for accessing the API is as follows `/api/v1/api_method/api_
 ### **Private API**
 
 Requires the use of an authorization and is available only by using a `POST` request and `GET` request.
-To access this API requires authentication and you must use POST methods. API keys can be obtained in your account.
+To access this API requires authentication and you ***must use `POST` methods***. API keys can be obtained in your account.
 
 __***Authorization***__
 <br/>Authorization is done via sending two headers:
