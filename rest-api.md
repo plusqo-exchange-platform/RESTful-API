@@ -239,7 +239,7 @@ date\_from | integer | Timestamp to start | 0 |
 date\_to | integer | Timestamp to end | current timestamp | 
 type | string | type to find | | bid, ask
 
-Sample call : `https://trading.plusqo.io/api/v1/orderbook/info?pair_id=1
+Sample call : `https://trading.plusqo.io/api/v1/orderbook/info?pair_id=1'
 
 Sample Responses
 
