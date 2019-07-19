@@ -35,9 +35,9 @@ __***Authorization***__
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_URL, $api_url);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-	$result = curl_exec($ch);
-	//handle with $result here...
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
 ```
 
 ## **`Public`** calls available for all without registration
@@ -534,9 +534,9 @@ page | integer | Current page | 1 |
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_URL, $api_url);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-	$result = curl_exec($ch);
-	//handle with $result here...
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
 	
 ```
 </details>
