@@ -522,6 +522,8 @@ page | integer | Current page | 1 |
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 ```
+</details>
+
 
 <details>
  <summary>Sample Response (application/json)</summary>
