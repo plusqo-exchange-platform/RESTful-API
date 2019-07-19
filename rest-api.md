@@ -164,7 +164,7 @@ Name | Type | Description | Default value | Available values
 --- | --- | --- | --- | ---
 pair\_id | integer | Currency pair id |  | 
 date\_from | integer | Timestamp to start | -1 month | 
-date\_to | string | Timestamp to end | current timestamp | 
+date\_to | integer | Timestamp to end | current timestamp | 
 order\_by | string | Field to order by | pair\_id | pair_id, min, max, avg, vol
 order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
@@ -188,7 +188,7 @@ Name | Type | Description | Default value | Available values
 --- | --- | --- | --- | ---
 pair\_id | integer | Currency pair id |  | 
 date\_from | integer | Timestamp to start | -1 day | 
-date\_to | string | Timestamp to end | current timestamp | 
+date\_to | integer | Timestamp to end | current timestamp | 
 order\_by | string | Field to order by | pair\_id | pair_id, min, max, avg, vol
 order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
