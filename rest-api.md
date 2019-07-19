@@ -259,9 +259,20 @@ pair\_id | integer | Currency pair id to find |  |
 
 Sample call : `https://trading.plusqo.io/api/v1/orderbook/ticker?pair_id=1`
 
-Sample Responses
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+    "errors": {
+       "field": "Error text for input named field"
+    },
+    "response": {
+       "entities": [
+       
+       ]
+    }
+}
+```
 
-Code | Description 
---- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"response": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
-500 |  Server error
+</details>
