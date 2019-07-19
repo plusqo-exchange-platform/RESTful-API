@@ -53,24 +53,24 @@ Sample call : `https://trading.plusqo.io/api/v1/currency/list?order_by=name`
  
 ```javascript
 {
-    "errors": {
-        "field": "Error text for input named field"
-     }, 
-     "pagination": {
-         "current_page": 1,
-         "items_per_page": 10,
-         "total_items": 100,
-         "total_pages": 10
-     },
-     "responses": {
-         "entities": [
-             {
-                 "iso" : "BTC",
-                 "name" : "Bitcoin",
-                 "currency_id" : 1
-             }
-         ]
-     }
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "currency_id": 1,
+        "iso": "BTC",
+        "name": "Bitcoin"
+      }
+    ]
+  }
 }
 ```
 </details>
@@ -87,12 +87,25 @@ currency\_id | integer | Currency id to find (*required*) |  |
 
 Sample call : `https://trading.plusqo.io/api/v1/currency/info/?currency_id=1`
 
-Sample Responses
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "response": {
+    "entity": {
+      "currency_id": 1,
+      "iso": "BTC",
+      "name": "Bitcoin"
+    }
+  }
+}
+```
+</details>
 
-Code | Description 
---- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"response": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entity": <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iso" : "BTC",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name" : "Bitcoin",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"currency_id" : 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;}<br/>}
-500 |  Server error
 
 
 ### 3. **`GET`&nbsp;&nbsp;/trade/list** (Get trade logs list) 
@@ -285,14 +298,25 @@ Sample call : `https://trading.plusqo.io/api/v1/orderbook/ticker?pair_id=1`
  
 ```javascript
 {
-    "errors": {
-       "field": "Error text for input named field"
-    },
-    "response": {
-       "entities": [
-       
-       ]
-    }
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "response": {
+    "entities": [
+      {
+        "pair_id": 1,
+        "pair_name": "BTC/EUR",
+        "ask": {
+          "price": 8700,
+          "amount": 1
+        },
+        "bid": {
+          "price": 8600,
+          "amount": 2
+        }
+      }
+    ]
+  }
 }
 ```
 
