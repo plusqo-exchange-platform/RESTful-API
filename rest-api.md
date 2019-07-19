@@ -497,18 +497,31 @@ Sample call : `https://trading.plusqo.io/api/v1/orderbook/ticker?pair_id=1`
 
 ## **`Private`** calls requiring obtaining API key pair
 
-### 1. **`POST`&nbsp;&nbsp;/currency/list** (Get currencies list) 
+### 1. **`POST`&nbsp;&nbsp;/trade/list** (Get trade logs list) 
 
 Parameter
 
 Name | Type | Description | Default value | Available values 
 --- | --- | --- | --- | ---
-order\_by | string | Field to order by | currency\_id | iso, name, currency\_id
+pair\_id | integer | Currency pair id |  | 
+type | string | type to find |  | buy, sell
+datef\_from | integer | Timestamp to start | -1 day | 
+datef\_to | integer | Timestamp to end | current timestamp | 
+order\_by | string | Field to order by | trade\_id | trade\_id, pair\_id, type, price, volume, fee, created
 order\_direction | string | Direction to order by | asc | asc, desc
 items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
 page | integer | Current page | 1 | 
 
-Sample call : `https://trading.plusqo.io/api/v1/currency/list?order_by=name`
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+	$postData = http_build_query($data);
+    $sign = hash_hmac('sha512', $postData, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+```
 
 <details>
  <summary>Sample Response (application/json)</summary>
@@ -527,9 +540,15 @@ Sample call : `https://trading.plusqo.io/api/v1/currency/list?order_by=name`
   "response": {
     "entities": [
       {
-        "currency_id": 1,
-        "iso": "BTC",
-        "name": "Bitcoin"
+        "trade_id": 1,
+        "pair_id": 1,
+        "is_buyer": 0,
+        "is_seller": 1,
+        "type": "buy",
+        "fee": 3,
+        "price": 8200,
+        "volume": 1,
+        "created": 1529515521
       }
     ]
   }
