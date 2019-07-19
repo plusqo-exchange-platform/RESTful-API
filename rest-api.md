@@ -575,3 +575,73 @@ page | integer | Current page | 1 |
 ```
 </details>
 
+
+### 2. **`POST`&nbsp;&nbsp;/trade/list/latest** (Get the list of trades for the last 7 days) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+pair\_id | integer | Currency pair id |  | 
+type | string | type to find |  | buy, sell
+date\_from | integer | Timestamp to start | -1 day | 
+datef\_to | integer | Timestamp to end | current timestamp | 
+order\_by | string | Field to order by | trade\_id | trade\_id, pair\_id, type, price, volume, fee, created
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | Current page | 1 | 
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/trade/list/latest";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('pair_id' => 1, 'nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "trade_id": 1,
+        "pair_id": 1,
+        "is_buyer": 0,
+        "is_seller": 1,
+        "type": "buy",
+        "fee": 3,
+        "price": 8200,
+        "volume": 1,
+        "created": 1529515521
+      }
+    ]
+  }
+}
+```
+</details>
