@@ -125,12 +125,35 @@ page | integer | current page (*required*) | 1 |
 
 Sample call : `https://trading.plusqo.io/api/v1/trade/list?pair_id=1`
 
-Sample Responses
-
-Code | Description 
---- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"trade_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pair_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type" : "buy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price" : 8200,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"volume" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created" : 1529515521<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
-500 |  Server error
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "trade_id": 1,
+        "pair_id": 1,
+        "type": "buy",
+        "price": 8200,
+        "volume": 1,
+        "created": 1529515521
+      }
+    ]
+  }
+}
+```
+</details>
 
 
 ### 4. **`GET`&nbsp;&nbsp;/trade/info** (Get trade log by id) 
@@ -143,12 +166,27 @@ trade\_id | integer | Trade id to find (*required*) |  |
 
 Sample call : `https://trading.plusqo.io/api/v1/trade/info/?trade_id=1`
 
-Sample Responses
-
-Code | Description 
---- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"response": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entity": <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"trade_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pair_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type" : "buy"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price" : 8200<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"volume" : 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"created" : 1529515521<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;}<br/>}
-500 |  Server error
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "response": {
+    "entity": {
+      "trade_id": 1,
+      "pair_id": 1,
+      "type": "buy",
+      "price": 8200,
+      "volume": 1,
+      "created": 1529515521
+    }
+  }
+}
+```
+</details>
 
 
 ### 5. **`GET`&nbsp;&nbsp;/pair/list** (Get currency pairs list) 
