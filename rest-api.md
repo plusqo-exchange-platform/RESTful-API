@@ -701,3 +701,64 @@ trade\_id | integer | trade id to find |  |
 }
 ```
 </details>
+
+
+### 4. **`POST`&nbsp;&nbsp;/balance/list** (Get balances list) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+order\_by | string | Field to order by | currency\_id | currency\_id
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | Current page | 1 | 
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/balance/list";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "currency_id": 1,
+        "balance": 18200,
+        "address": "address-for-deposit"
+      }
+    ]
+  }
+}
+```
+</details>
