@@ -1,4 +1,6 @@
-# RESTful-API  &nbsp;&nbsp;[![plusqo exchange platform](https://trading.plusqo.io/assets/frontend/img/logo_light.svg)](https://trading.plusqo.io)
+[![plusqo exchange platform](https://trading.plusqo.io/assets/frontend/img/logo_light.svg)](https://trading.plusqo.io)
+
+# RESTful-API
 
 PlusQO RESTful API for Traders - V1 / [ Base URL: https://trading.plusqo.io/api/v1/ ]
 
