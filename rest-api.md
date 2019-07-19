@@ -6,20 +6,20 @@ PlusQO RESTful API for Traders - V1 / [ Base URL: `https://trading.plusqo.io/api
 
 ### **Public API**
 
-Does not require the use of authentication methods and is available via GET requests.
-This API does not require authorization, and is accessible through the GET request.
+Does not require the use of authentication methods and is available via `GET` requests.
+This API does not require authorization, and is accessible through the `GET` request.
 In general, the URL for accessing the API is as follows `/api/v1/api_method/api_action?api_params` where api_method – this API method that is accessed, api_action – the action to be performed and api_params – incoming request parameters.
 
 ### **Private API**
 
-Requires the use of an authorization and is available only by using a POST request and GET request.
+Requires the use of an authorization and is available only by using a `POST` request and `GET` request.
 To access this API requires authentication and you must use POST methods. API keys can be obtained in your account.
 
 __***Authorization***__
 <br/>Authorization is done via sending two headers:
 
   1. **`key`** - The public key, that can be obtained from user’s account
-  2. **`sign`** - POST data (param = val & param1 = val1 … & paramN = valN), signed by the secret key HMAC-SHA512, secret key is also obtained from user’s account
+  2. **`sign`** - `POST` data (param = val & param1 = val1 … & paramN = valN), signed by the secret key HMAC-SHA512, secret key is also obtained from user’s account
 
 
 #### ***PHP example***
@@ -493,3 +493,47 @@ Sample call : `https://trading.plusqo.io/api/v1/orderbook/ticker?pair_id=1`
 ```
 
 </details>
+
+
+## **`Private`** calls requiring obtaining API key pair
+
+### 1. **`POST`&nbsp;&nbsp;/currency/list** (Get currencies list) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+order\_by | string | Field to order by | currency\_id | iso, name, currency\_id
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | Current page | 1 | 
+
+Sample call : `https://trading.plusqo.io/api/v1/currency/list?order_by=name`
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "currency_id": 1,
+        "iso": "BTC",
+        "name": "Bitcoin"
+      }
+    ]
+  }
+}
+```
+</details>
+
