@@ -176,5 +176,29 @@ Sample Responses
 
 Code | Description 
 --- | --- 
-200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pair_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max" : 100.234,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"avg" : 65.22452,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vol" : 987.1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
+200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pair_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max" : 100.234,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"avg" : 65.22452,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vol" : 987.1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
+500 |  Server error
+
+
+### 8. **`GET`&nbsp;&nbsp;/stats/marketdepthfull** (Get market depth stats dependant on trade logs) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+pair\_id | integer | Currency pair id |  | 
+date\_from | integer | Timestamp to start | -1 day | 
+date\_to | string | Timestamp to end | current timestamp | 
+order\_by | string | Field to order by | pair\_id | pair_id, min, max, avg, vol
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | Current page | 1 | 
+
+Sample call : `https://trading.plusqo.io/api/v1/stats/marketdepthfull`
+
+Sample Responses
+
+Code | Description 
+--- | --- 
+200 | {<br/>&nbsp;&nbsp;&nbsp;"errors": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"field": "Error text for input named field"<br/>&nbsp;&nbsp;&nbsp;}, <br/>&nbsp;&nbsp;&nbsp;"pagination": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"current_page": 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items_per_page": 10,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_items": 100,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 10<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"responses": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"entities": \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pair_id" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pair_name" : "BTC/EUR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"last_price" : 8203.98,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min" : 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max" : 8330.23,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"avg" : 8208.22,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vol" : 99887.1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\]<br/>&nbsp;&nbsp;&nbsp;}<br/>}
 500 |  Server error
