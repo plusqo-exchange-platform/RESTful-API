@@ -653,7 +653,7 @@ Parameter
 
 Name | Type | Description | Default value | Available values 
 --- | --- | --- | --- | ---
-trade\_id | integer | trade id to find |  | 
+trade\_id | integer | trade id to find (*required*) |  | 
 
 <details>
  <summary>Sample call in PHP</summary>
@@ -770,7 +770,7 @@ Parameter
 
 Name | Type | Description | Default value | Available values 
 --- | --- | --- | --- | ---
-currency\_id | string | Currency id to find balance |  | 
+currency\_id | string | Currency id to find balance (*required*) |  | 
 
 
 <details>
@@ -1004,6 +1004,62 @@ page | integer | current page | 1 |
         "created": 1529515521
       }
     ]
+  }
+}
+```
+</details>
+
+
+### 9. **`POST`&nbsp;&nbsp;/invoice/info** (Get transaction request by id) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+invoice\_id | integer | transaction request id to find (*required*) |  | 
+
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/invoice/info";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('invoice_id' => 1, 'nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "response": {
+    "entity": {
+      "invoice_id": 1,
+      "currency_id": 1,
+      "transaction_id": 1,
+      "type": "deposit",
+      "payment_type": "cryptopay",
+      "amount": 100,
+      "fee": 1,
+      "created": 1529515521
+    }
   }
 }
 ```
