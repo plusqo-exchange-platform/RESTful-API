@@ -1203,3 +1203,72 @@ order\_id | integer | order id to find (*required*) |  |
 }
 ```
 </details>
+
+
+### 12. **`POST`&nbsp;&nbsp;/order/new** (Create new order) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+pair\_id | integer | Currency pair id (*required*) |  | 
+amount | number | amount to buy or sell (*required*) |  | 
+price | number | Price of order, required if type\_trade: \'limit\’, \'stop\_limit\', \'trailing\_stop\_limit\' | 0 | 
+price\_stop | number | Price stop of order, required if type\_trade: \'stop\_limit\, \'stop\_market\' | 0 | 
+distance | number | Distance of order, required if type_trade: \'trailing\_stop\', \'trailing\_stop\_limit\' |   | 
+type | string | type of order (*required*) |  | buy, sell
+type\_trade | string | type of order trade |  | \'limit\', \'market\', \'stop\_limit\', \'stop\_market\', \'trailing\_stop\', \'trailing\_stop\_limit\'
+
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/order/new";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('pair_id' => 1, 'amount' => 1, 'price' => 8500, 'type' => 'buy', 'type_trade' => 'limit', 'nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entity": {
+      "order_id": 1,
+      "pair_id": 1,
+      "type": "buy",
+      "type_trade": "limit",
+      "price": 8500,
+      "price_stop": 0,
+      "volume": 1,
+      "fee_percent": 1,
+      "total": 1
+    }
+  }
+}
+```
+</details>
