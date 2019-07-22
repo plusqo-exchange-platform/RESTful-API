@@ -2,7 +2,7 @@
 
 # RESTful-API
 
-PlusQO RESTful API for Traders - V1 / [ Base URL: `https://trading.plusqo.io/api/v1/` ]
+PLUSQO RESTful API for Traders - V1 / [ Base URL: `https://trading.plusqo.io/api/v1/` ]
 
 ### **Public API**
 
@@ -13,7 +13,7 @@ In general, the URL for accessing the API is as follows `/api/v1/api_method/api_
 ### **Private API**
 
 Requires the use of an authorization and is available only by using a `POST` request and `GET` request.
-To access this API requires authentication and you **must use `POST` methods**. API keys can be obtained in your account once you have registered to be a trader in [PlusQO Trading Exchange.](https://trading.plusqo.io)
+To access this API requires authentication and you **must use `POST` methods**. API keys can be obtained in your account once you have registered to be a trader in [PLUSQO Trading Exchange.](https://trading.plusqo.io)
 
 __***Authorization***__
 <br/>Authorization is done via sending two headers:
