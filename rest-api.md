@@ -1141,3 +1141,65 @@ page | integer | current page | 1 |
 }
 ```
 </details>
+
+
+### 11. **`POST`&nbsp;&nbsp;/order/info** (Get order by id) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+order\_id | integer | order id to find (*required*) |  | 
+
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/order/info";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('order_id' => 1, 'nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "response": {
+    "entity": {
+      "order_id": 1,
+      "pair_id": 1,
+      "type": "buy",
+      "type_trade": "limit",
+      "price": 8500,
+      "price_stop": 0,
+      "volume": 1,
+      "volume_start": 2,
+      "fee_percent": 1,
+      "fee_percents": {
+        "taker": "1.0000",
+        "maker": "0.5000"
+      },
+      "created": 1529515521
+    }
+  }
+}
+```
+</details>
