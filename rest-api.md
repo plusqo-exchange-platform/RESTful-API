@@ -813,3 +813,73 @@ currency\_id | string | Currency id to find balance |  |
 }
 ```
 </details>
+
+
+### 6. **`POST`&nbsp;&nbsp;/transaction/list** (Get transactions list) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+date\_from | integer | Timestamp to start | -30 day | 
+date\_to | integer | Timestamp to end | current timestamp | 
+currency\_id | integer | currency id to filter |  | 
+type | integer | type to filter |  | balance\_deposit, balance\_withdraw, order\_create, order\_cancel, order\_buy, order\_sell, order\_refund, affiliate\_payment, voucher\_create, voucher\_cancel, voucher\_redeem, order\_trade, payment\_transaction
+order\_by | string | Field to order by | transaction\_id | transaction\_id, type, invoice\_id, volume, system\_commission, created
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | current page | 1 | 
+
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/transaction/list";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('type' => 'order_trade','nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "transaction_id": 1,
+        "pair_id": 1,
+        "type": "order_trade",
+        "invoice_id": 1,
+        "volume": 100,
+        "system_commission": 1,
+        "created": 1529515521
+      }
+    ]
+  }
+}
+```
+</details>
