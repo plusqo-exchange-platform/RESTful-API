@@ -1213,7 +1213,7 @@ Name | Type | Description | Default value | Available values
 --- | --- | --- | --- | ---
 pair\_id | integer | Currency pair id (*required*) |  | 
 amount | number | amount to buy or sell (*required*) |  | 
-price | number | Price of order, required if type\_trade: \'limit\’, \'stop\_limit\', \'trailing\_stop\_limit\' | 0 | 
+price | number | Price of order, required if type\_trade: \'limit\', \'stop\_limit\', \'trailing\_stop\_limit\' | 0 | 
 price\_stop | number | Price stop of order, required if type\_trade: \'stop\_limit\, \'stop\_market\' | 0 | 
 distance | number | Distance of order, required if type_trade: \'trailing\_stop\', \'trailing\_stop\_limit\' |   | 
 type | string | type of order (*required*) |  | buy, sell
