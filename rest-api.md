@@ -1064,3 +1064,80 @@ invoice\_id | integer | transaction request id to find (*required*) |  |
 }
 ```
 </details>
+
+
+### 10. **`POST`&nbsp;&nbsp;/order/list** (Get orders list) 
+
+Parameter
+
+Name | Type | Description | Default value | Available values 
+--- | --- | --- | --- | ---
+date\_from | integer | Timestamp to start | -30 day | 
+date\_to | integer | Timestamp to end | current timestamp | 
+pair\_id | integer | currency pair id to filter |  | 
+type | integer | type to filter |  | buy, sell
+order\_by | string | Field to order by | order\_id | order\_id, pair\_id, type, volume, price, fee, active, created
+order\_direction | string | Direction to order by | asc | asc, desc
+items\_per\_page | integer | How many items to show per page (min: 1, max: 100) | 100 | 
+page | integer | current page | 1 | 
+
+
+<details>
+ <summary>Sample call in PHP</summary>
+ 
+```php
+    $api_url = "https://trading.plusqo.io/api/v1/order/list";
+    $mt = explode(' ', microtime());
+    $NONCE = $mt[1] . substr($mt[0], 2, 6);
+    $data = array('nonce' => $NONCE);
+    $post_data = http_build_query($data, '', '&');
+    $sign = hash_hmac('sha512', $post_data, $privateKey);
+    $headers = array("Key: $publicKey", "Sign: $sign");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $result = curl_exec($ch);
+    //handle with $result here...
+	
+```
+</details>
+
+
+<details>
+ <summary>Sample Response (application/json)</summary>
+ 
+```javascript
+{
+  "errors": {
+    "field": "Error text for input named field"
+  },
+  "pagination": {
+    "current_page": 1,
+    "items_per_page": 10,
+    "total_items": 100,
+    "total_pages": 10
+  },
+  "response": {
+    "entities": [
+      {
+        "order_id": 1,
+        "pair_id": 1,
+        "type": "buy",
+        "type_trade": "limit",
+        "price": 8500,
+        "price_stop": 0,
+        "volume": 1,
+        "volume_start": 2,
+        "fee_percent": 1,
+        "fee_percents": {
+          "taker": "1.0000",
+          "maker": "0.5000"
+        },
+        "created": 1529515521
+      }
+    ]
+  }
+}
+```
+</details>
